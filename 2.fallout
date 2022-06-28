@@ -1,0 +1,8 @@
+#!/bin/bash
+
+set -e -o pipefail
+
+source key
+CON=0xDd454C753fbc3Fd7cea4d1F2a7a6108aFc29E2EF
+
+cast send --private-key $KEY  $CON 'Fal1out()'

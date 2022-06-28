@@ -1,0 +1,10 @@
+#!/bin/bash
+
+set -e -o pipefail
+
+source key
+CON=0x2A80Ea9B655322b96317FD7B2f2Bb87159856aee
+
+# forge create --private-key $KEY '11.elevator.sol:Building'
+BUILDING=0x68cfd1803e7dddb7432348644e9441b8105172d2
+cast send --private-key $KEY $BUILDING 'goTop(address)' $CON

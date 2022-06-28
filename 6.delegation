@@ -1,0 +1,9 @@
+#!/bin/bash
+
+set -e -o pipefail
+
+source key
+CON=0x382DF31276379fb9bD704eE0db5f997cceef6cA2
+
+# For whatever reason gas is badly estimated
+cast send --gas 1000000 --private-key $KEY $CON 'pwn()'

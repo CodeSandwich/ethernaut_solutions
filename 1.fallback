@@ -1,0 +1,10 @@
+#!/bin/bash
+
+set -e -o pipefail
+
+source key
+CON=0xe1dA7B8727850193154C03A14eaC800a67e18586
+
+cast send --private-key $KEY --value 1 $CON 'contribute()'
+cast send --private-key $KEY --value 1 $CON
+cast send --private-key $KEY $CON 'withdraw()'

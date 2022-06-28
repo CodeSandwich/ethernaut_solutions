@@ -1,0 +1,17 @@
+#!/bin/bash
+
+set -e -o pipefail
+
+source key
+
+CON=0x71E1977A14a8f2a06DDaa10aC6d5Ed68166bc637
+
+# cast send --private-key $KEY $CON 'make_contact()'
+
+# cast send --private-key $KEY $CON 'retract()'
+
+# 2^256 - $(cast keccak 0x0000000000000000000000000000000000000000000000000000000000000001)
+IDX=0x4ef1d2ad89edf8c4d91132028e8195cdf30bb4b5053d4f8cd260341d4805f30a
+VAL=$(cast --to-uint256 $(cast --to-dec $ADDR))
+
+cast send --private-key $KEY $CON 'revise(uint, bytes32)' $IDX $VAL

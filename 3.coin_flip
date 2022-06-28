@@ -1,0 +1,12 @@
+#!/bin/bash
+
+set -e -o pipefail
+
+source key
+LVL=0x34Bc699031762D9C20dFEe078c409b7ceCb8E195
+HACK=0x0b81b2938f2e7ee6b73629c40d525523708a08ef
+
+# forge create --private-key $KEY '3.coin_flip.sol:SafeFlip'
+for i in {0..9}; do
+    cast send --private-key $KEY --confirmations 2 $HACK 'safeFlip(address)' $LVL
+done

@@ -1,0 +1,12 @@
+#!/bin/bash
+
+set -e -o pipefail
+
+source key
+CON=0x8972d6548d3F5529EEDa990391704eC301578ab2
+
+# forge create --private-key $KEY '26.double_entry_point.sol:Notifier'
+HACK=0x45aa599e4eb38300025eab83908652bcc61601d4
+
+FORTA=$(cast call $CON 'forta()(address)')
+cast send --private-key $KEY $FORTA 'setDetectionBot(address)' $HACK

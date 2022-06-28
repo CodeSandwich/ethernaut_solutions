@@ -1,0 +1,11 @@
+#!/bin/bash
+
+set -e -o pipefail
+
+source key
+
+CON=0x3221efFA5353000cc745110bbd50ab79d80E9cA1
+
+# cast compute-address --nonce 1 $CON
+TOK=0x770ed389f5e8ccc07ceda905fe0a84f912d56701
+cast send --private-key $KEY $TOK 'destroy(address)' $ADDR

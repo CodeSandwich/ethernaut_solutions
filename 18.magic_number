@@ -1,0 +1,16 @@
+#!/bin/bash
+
+set -e -o pipefail
+
+source key
+CON=0xd8790d98788C836AA58D4b358a4aC27CF0f11C23
+
+# solc --yul generic_init.yul
+INIT=60108038038082600039806000f35050
+# solc --yul 18.magic_number.yul
+CODE=602a60005260206000f3
+
+# Created via MEW
+MAGIC=0xDb01B051c578E10B8C106945308ff875AD34D93E
+
+cast send --private-key $KEY $CON 'setSolver(address)' $MAGIC

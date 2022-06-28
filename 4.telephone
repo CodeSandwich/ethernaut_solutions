@@ -1,0 +1,9 @@
+#!/bin/bash
+
+set -e -o pipefail
+
+source key
+
+CON=0x6A6832e8273e8FD2546EB40E0233bbaAedDC6966
+
+forge create --private-key $KEY '4.telephone.sol:Hack' --constructor-args $CON $ADDR

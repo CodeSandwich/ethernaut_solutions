@@ -1,0 +1,12 @@
+#!/bin/bash
+
+set -e -o pipefail
+
+source key
+CON=0xadA330Bcb7F59be15F0974EB691375cf1B4C6670
+
+# cast storage $CON 5
+# 0x946c616120df1ab4acd1c65d3905eb5b949bb57e55052c8ca4b913b52a9aa109
+PASS=0x946c616120df1ab4acd1c65d3905eb5b
+
+cast send --private-key $KEY $CON 'unlock(bytes16)' $PASS

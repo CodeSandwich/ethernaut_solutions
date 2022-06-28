@@ -1,0 +1,8 @@
+#!/bin/bash
+
+set -e -o pipefail
+
+source key
+CON=0x7f5aE7D88Ab4c6A17501169fB74cAc2Bc257E906
+
+forge create --private-key $KEY --value 1 '7.force.sol:Force' --constructor-args $CON

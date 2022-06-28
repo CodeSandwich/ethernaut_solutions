@@ -1,0 +1,9 @@
+#!/bin/bash
+
+set -e -o pipefail
+
+anvil --fork-url "https://rinkeby.infura.io/v3/7150450f0b93496e90de2789993276d0" --fork-block-number 10919717
+
+
+# force execution with `cast send --gas XXXX ...`
+# debug the execution with `cast run --rpc-url http://127.0.0.1:8545 --debug <TX_HASH>`

